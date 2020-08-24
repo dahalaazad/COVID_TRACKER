@@ -3,6 +3,9 @@ import { MenuItem, FormControl, Select, Card, CardContent } from '@material-ui/c
 
 import InfoBox from './InfoBox';
 import Map from "./Map";
+import Table from "./Table/Table";
+import LineGraph from "./LineGraph";
+import {sortData} from "./util";
 import './App.css';
 
 function App() {
@@ -11,6 +14,7 @@ function App() {
   const [country, setCountry] = useState ('worldwide');
   //const [countryName, setCountryName] = useState();
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     fetch('https://disease.sh/v3/covid-19/all')
@@ -44,7 +48,9 @@ function App() {
           ));
           //const countries = x.concat(countries1); 
           
-          
+          const sortedData = sortData(data);
+          setTableData(sortedData); 
+          //console.log(data);
           setCountries(countries);
          // console.log(countries);
       })
@@ -130,11 +136,12 @@ function App() {
 
           </div>
           <Card className="app__right">
-            RIGHT SIDE
             <CardContent>
               {/*Table*/}
               <h3>Live Cases by Country</h3>
-              {/*Graph*/}
+              <Table countries={tableData} />
+                            {/*Graph*/}
+              {/*<LineGraph />*/}
               <h3>Worldwide new cases</h3>
             </CardContent>
           </Card>
