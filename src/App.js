@@ -67,7 +67,7 @@ function App() {
     //setCountryName(countryName);
     
     const url = 
-      countryCode === 'worldwide' 
+      (countryCode === 'worldwide') 
         ? 'https://disease.sh/v3/covid-19/all' 
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
 
@@ -79,7 +79,7 @@ function App() {
             //console.log(url,'--->',countryInfo);
         })
     };
-  console.log(countryInfo);
+  //console.log(countryInfo);
   
   return (
     <Fragment>
@@ -141,7 +141,7 @@ function App() {
               <h3>Live Cases by Country</h3>
               <Table countries={tableData} />
                             {/*Graph*/}
-              {/*<LineGraph />*/}
+              <LineGraph />
               <h3>Worldwide new cases</h3>
             </CardContent>
           </Card>
