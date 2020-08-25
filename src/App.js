@@ -2,11 +2,12 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { MenuItem, FormControl, Select, Card, CardContent } from '@material-ui/core';
 
 import InfoBox from './InfoBox';
-import Map from "./Map";
+import Map from "./Map/Map";
 import Table from "./Table/Table";
 import LineGraph from "./LineGraph";
 import {sortData} from "./util";
 import './App.css';
+//import 'leaflet/dist/leaflet.css';
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -132,7 +133,7 @@ function App() {
             </div>
 
             {/*Map*/}
-                    <Map />
+          <Map />
 
           </div>
           <Card className="app__right">
